@@ -1,0 +1,16 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block modal %}
+<div class="delete-msg">
+    <div class="shadow">
+      <h4>Are you sure want to Delete {{item.title}}?</h4>
+        <form action="" method="POST">
+            {% csrf_token %}
+            <div>
+                <button type="submit" class="btn btn-success yes">YES</button>
+                <a href="{% url 'todo:home' %}" class="btn btn-danger no">NO</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

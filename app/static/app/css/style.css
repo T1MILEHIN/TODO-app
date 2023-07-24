@@ -1,0 +1,165 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+}
+section.list>div {
+    min-width: 300px;
+    width: 700px;
+    border-radius: 10px;
+    margin: auto;
+    padding-bottom: 30px;
+}
+section.list>div div.head {
+    border: 1px solid;
+    padding: 30px 30px 30px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    background: linear-gradient(90deg, orangered, orange);
+}
+section.list>div div.head a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+form.search {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-block: 40px;
+    padding-inline: 10px;
+}
+form.search input[type=text] {
+    height:45px;
+    flex: 4;
+    padding-left: 8px;
+}
+form.search input[type=text]:focus {
+    outline: 2px solid orangered;
+    outline-offset: 2px;
+    }
+form.search button {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    background-color: orangered;
+    color: #fff;
+    font-weight: 600;
+    border-radius: 5px;
+}
+div.todos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid gray;
+}
+div.todos h5 a,
+div.todos>a {
+    text-decoration: none;
+    font-size: 1.2rem;
+    color: #000
+}
+
+div.todos h5 a.crossed {
+    color: gray;
+    text-decoration: line-through;
+}
+
+form.create {
+    padding: 40px;
+    border-radius: 10px;
+}
+
+form.create>div label {
+    font-size: 1.2rem;
+}
+
+form.create>div input[type="text"] {
+    width: 100%;
+    height: 45px;
+}
+
+form.create>div textarea {
+    display: block;
+    resize: none;
+}
+
+div.delete-msg {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.486);
+}
+
+div.delete-msg.active {
+    z-index: 99;
+    opacity: 1;
+}
+
+div.delete-msg>div {
+    position: absolute;
+    background-color: #fff;
+    width: fit-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 3;
+}
+
+div.delete-msg>div.slide {
+    animation-name: slide;
+    animation-duration: 300ms;
+}
+
+@keyframes slide {
+    from {top: -200px;}
+    to   {top: 50%;}
+}
+
+form.no-task {
+    display: flex;
+    gap: 10px;
+}
+
+
+@media only screen and (max-width:800px) {
+    section.list>div {
+        width: 330px;
+    }
+    div.head h1 {
+        font-size: 1rem;
+    }
+    section.list>div div.head a {
+        font-size: .9rem;
+    }
+    div.delete-msg>div {
+        width: 330px;
+    }
+    div.delete-msg>div h4 {
+        font-size: .9rem;
+    }
+    input.search-bar {
+        border: none;
+        border: 1px solid #000;
+    }
+    div.todos h5 a,
+    div.todos>a,
+    div.todos h5 {
+        font-size: .9rem;
+    }
+}

@@ -1,0 +1,40 @@
+{% extends 'app/base.html' %}
+{% load static %}
+{% block content %}
+  <div class="shadow">
+    <div class="head">
+      <h1>WELCOME {{user}}</h1>
+      <a href="{% url 'user:logout' %}">Logout</a>
+    </div>
+    {% if todos %}
+    <div>
+      <a href="{% url 'todo:create-todo' %}" class="btn btn-success m-2">ADD TASK</a>
+      <form action="" class="search">
+        <input type='text' class="search-bar" name="todo" />
+        <button type="submit" class="">SEARCH</button>
+      </form>
+    </div>
+    {% for todo in todos %}
+    <div class="todos">
+      {% if todo.complete == True %}
+      <h5><a href="{% url 'todo:update-todo' todo.pk %}" class="crossed">{{todo.title}}</a> ({{todo.date_created|timesince}} ago)</h5>
+      {% else %}
+      <h5><a href="{% url 'todo:update-todo' todo.pk %}">{{todo.title}}</a> ({{todo.date_created|timesince}} ago)</h5>
+      {% endif %}
+      <a href="{% url 'todo:delete-todo' todo.pk %}" class="delete"><i class="fa-solid fa-xmark"></i></a>
+    </div>
+    {% endfor %}
+    {% else %}
+      <div>
+        <a href="{% url 'todo:create-todo' %}" class="btn btn-success m-2">ADD TASK</a>
+        <form action="" class="no-task">
+          <input type='text'/>
+          <button type="submit" class="btn btn-success">SEARCH</button>
+        </form>
+      </div>
+    <h1>No Task Yet</h1>
+    {% endif %}
+  </div>
+{% endblock content %}
+
+
